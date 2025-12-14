@@ -46,7 +46,7 @@ export const Settings = () => {
         <p>Current: {scoreGoal}</p>
       </div>
 
-      <div className="border rounded-lg m-10 p-4">
+      {/* <div className="border rounded-lg m-10 p-4">
         <h3>View mode:</h3>
         <button
           onClick={() => setViewMode("grid")}
@@ -63,20 +63,20 @@ export const Settings = () => {
         </button>
 
         <p>Current view: {CapitalizeFirstLetter(viewMode)}</p>
-      </div>
+      </div> */}
 
       <div className="border rounded-lg m-10 p-4">
         <h3>Hide Round History:</h3>
         <button
-          onClick={() => setHideHistory("true")}
-          disabled={viewMode === "true"}
+          onClick={() => setHideHistory(true)}
+          disabled={viewMode === true}
         >
           Yes, hide it.
         </button>
 
         <button
-          onClick={() => setHideHistory("false")}
-          disabled={viewMode === "false"}
+          onClick={() => setHideHistory(false)}
+          disabled={viewMode === false}
         >
           No, show it.
         </button>

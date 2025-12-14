@@ -15,7 +15,7 @@ export const Start = () => {
       <img className="w-1/3 m-auto" src={logo} />
       <h1>Score App</h1>
       <NavLink to={destination}>
-        <button onClick={startGame}>New Game</button>
+        <button className="CTA" onClick={startGame}>New Game</button>
       </NavLink>
       <NavLink to="/settings">
         <button className="bg-secondary">Settings</button>

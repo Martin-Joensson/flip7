@@ -7,7 +7,7 @@ export const App = () => {
   const [numberOfPlayer, setNumberOfPlayer] = useState(3);
 
   return (
-    <div className="min-h-screen w-screen relative p-4">
+    <div className="min-h-screen w-screen relative">
       <Header />
       <div className="pb-10">
         <CategoryRoutes />

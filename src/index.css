@@ -3,8 +3,8 @@
 @theme {
   --color-primary: #242424;
   --color-secondary: #ababab;
-  --color-tertiary: rgba(255, 67, 67, 0.87);
-    --color-button: rgba(150, 67, 67, 0.87);
+  --color-tertiary: rgba(20, 120, 200, 0.87);
+  --color-button: rgba(67, 67, 67, 0.87);
 
   --color-hover: rgba(255, 67, 67, 0.87);
 
@@ -53,7 +53,7 @@
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Raleway, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -116,7 +116,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background: var(--color-secondary);
+  background: var(--color-button);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -137,6 +137,10 @@ button:focus-visible {
     #ffffff2c 20%
   );
 } */
+
+.CTA {
+  background: var(--color-tertiary);
+}
 
 /* Player colors */
 .player1 {

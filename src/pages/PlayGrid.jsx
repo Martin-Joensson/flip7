@@ -77,13 +77,11 @@ export const PlayGrid = () => {
         ))}
       </div>
 
-      <button
+          <button
+              className="mt-4 CTA"
         onClick={submitAllPlayers}
         // disabled={scores.some((s) => s === "")}
-        style={{
-          marginTop: "1rem",
-          width: "100%",
-        }}
+
       >
         Round over, add the scores.
       </button>
