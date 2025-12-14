@@ -1,10 +1,7 @@
 import { useGameStore } from "../stores/gameStore";
-import { useSettingStore } from "../stores/settingsStore";
 import PlayerRoundHistory from "./PlayerRoundHistory";
-
-function SmallPlayerCard({ player, score, onScoreChange, onSubmit }) {
+export const RowPlayerCard = ({ player, score, onScoreChange, onSubmit }) => {
   const setPlayerName = useGameStore((s) => s.setPlayerName);
-  const hideHistory = useSettingStore((s) => s.hideHistory);
   let initialValue = 0;
 
   return (
@@ -14,7 +11,7 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit }) {
         padding: "1rem",
         borderRadius: "8px",
         color: "#fff",
-        minWidth: "140px",
+        minWidth: "160px",
       }}
     >
       {/* Editable name */}
@@ -38,7 +35,7 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit }) {
         )}
       </h3>
 
-      {hideHistory ? null : <PlayerRoundHistory scores={player.scores} />}
+      <PlayerRoundHistory scores={player.scores} />
 
       <input
         type="number"
@@ -52,6 +49,4 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit }) {
       />
     </div>
   );
-}
-
-export default SmallPlayerCard;
+};

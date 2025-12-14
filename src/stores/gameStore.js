@@ -12,7 +12,7 @@ const PLAYER_COLORS = [
 
 const createPlayers = (count) =>
   Array.from({ length: count }, (_, i) => ({
-    id: `player-${i + 1}`,
+    id: `player${i + 1}`,
     name: `Player ${i + 1}`,
     color: PLAYER_COLORS[i % PLAYER_COLORS.length],
     scores: [],

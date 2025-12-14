@@ -3,6 +3,7 @@ import logo from "../assets/flip7logo.webp";
 import { NavLink } from "react-router-dom";
 import { useSettingStore } from "../stores/settingsStore";
 import { useGameStore } from "../stores/gameStore";
+import { Footer } from "../components/Footer";
 
 export const Start = () => {
   const viewMode = useSettingStore((state) => state.viewMode);
@@ -10,16 +11,16 @@ export const Start = () => {
   let destination = "/play-" + viewMode;
 
   return (
-    <div className="flex flex-col">
-      <img className="w-1/2 m-auto" src={logo} />
-      <h1>Flip 7 Score App</h1>
+    <div className="flex flex-col gap-2">
+      <img className="w-1/3 m-auto" src={logo} />
+      <h1>Score App</h1>
       <NavLink to={destination}>
-        <button onClick={startGame}>New {viewMode} Game</button>
+        <button onClick={startGame}>New Game</button>
       </NavLink>
       <NavLink to="/settings">
-        <button>Settings</button>
+        <button className="bg-secondary">Settings</button>
       </NavLink>
-
+{/* 
       <div className="colorArrayTest flex font-bold font-shadow-md">
         <div className="player1 w-20 rounded-full">...</div>
         <div className="player2 w-20 rounded-full">...</div>
@@ -39,7 +40,8 @@ export const Start = () => {
         <div className="player16 w-20 rounded-full">...</div>
         <div className="player17 w-20 rounded-full">...</div>
         <div className="player18 w-20 rounded-full">...</div>
-      </div>
+      </div> */}
+      <Footer />
     </div>
   );
 };

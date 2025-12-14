@@ -4,6 +4,7 @@
   --color-primary: #242424;
   --color-secondary: #ababab;
   --color-tertiary: rgba(255, 67, 67, 0.87);
+    --color-button: rgba(150, 67, 67, 0.87);
 
   --color-hover: rgba(255, 67, 67, 0.87);
 
@@ -37,6 +38,8 @@
   --breakpoint-laptop: 64rem;
   --breakpoint-desktop: 80rem;
   --breakpoint-wide: 100rem;
+
+  --grid-template-columns-auto-fit: repeat(auto-fit, minmax(min(calc(var(--spacing) * 36), 100%), 1fr));
 
   --stripes: 
   background-image: repeating-linear-gradient(
@@ -113,7 +116,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background: var(--color-secondary);
   cursor: pointer;
   transition: border-color 0.25s;
 }

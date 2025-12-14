@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useGameStore } from "../stores/gameStore";
 import SmallPlayerCard from "../components/SmallPlayerCard";
+import { NavLink } from "react-router-dom";
 
 export const PlayGrid = () => {
   const players = useGameStore((s) => s.players);
   const addRoundScores = useGameStore((s) => s.addRoundScores);
+
+
 
   const [scores, setScores] = useState(players.map(() => ""));
 
@@ -42,15 +45,7 @@ export const PlayGrid = () => {
 
   return (
     <div>
-      <h2>Round Scoring</h2>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-          gap: "1rem",
-        }}
-      >
+      <div className="grid grid-cols-auto-fit gap-1">
         {players.map((player, index) => (
           <SmallPlayerCard
             key={player.id}
@@ -70,7 +65,7 @@ export const PlayGrid = () => {
           width: "100%",
         }}
       >
-        Submit All Players
+        Round over, add the scores.
       </button>
     </div>
   );
