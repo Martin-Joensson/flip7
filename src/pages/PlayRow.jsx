@@ -3,12 +3,23 @@ import { useGameStore } from "../stores/gameStore";
 import SmallPlayerCard from "../components/SmallPlayerCard";
 import { NavLink } from "react-router-dom";
 import { RowPlayerCard } from "../components/RowPlayerCard";
+import { useSettingStore } from "../stores/settingsStore";
 
 export const PlayRow = () => {
   const players = useGameStore((s) => s.players);
   const addRoundScores = useGameStore((s) => s.addRoundScores);
+  const scoreGoal = useSettingStore((s) => s.scoreGoal);
 
   const [scores, setScores] = useState(players.map(() => ""));
+
+  // Compute the leading player over winScore
+  const totalScores = players.map((p) =>
+    p.scores.reduce((sum, s) => sum + s, 0)
+  );
+  const maxScore = Math.max(...totalScores.filter((s) => s >= scoreGoal));
+  const leadingPlayerId = players.find(
+    (p, i) => totalScores[i] === maxScore
+  )?.id;
 
   const updateScore = (index, value) => {
     const next = [...scores];
@@ -46,12 +57,23 @@ export const PlayRow = () => {
     <div>
       <div className="flex gap-1">
         {players.map((player, index) => (
-          <RowPlayerCard
+          <SmallPlayerCard
             key={player.id}
             player={player}
             score={scores[index]}
-            onScoreChange={(value) => updateScore(index, value)}
-            onSubmit={() => submitSinglePlayer(index)}
+            onScoreChange={(value) => {
+              const next = [...scores];
+              next[index] = value;
+              setScores(next);
+            }}
+            onSubmit={() => {
+              const numericScores = players.map((_, i) =>
+                i === index ? Number(scores[i]) : 0
+              );
+              addRoundScores(numericScores);
+              setScores(players.map(() => ""));
+            }}
+            isWinner={player.id === leadingPlayerId}
           />
         ))}
       </div>
@@ -61,7 +83,7 @@ export const PlayRow = () => {
         onClick={submitAllPlayers}
         disabled={scores.some((s) => s === "")}
       >
-       Round over, add the scores.
+        Round over, add the scores.
       </button>
     </div>
   );
