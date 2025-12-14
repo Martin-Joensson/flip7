@@ -43,10 +43,10 @@ export const PlayGrid = () => {
   const submitAllPlayers = () => {
     const hasEmpty = scores.some((s) => s === "");
 
-    if (hasEmpty) {
-      alert("All players must have a score");
-      return;
-    }
+    // if (hasEmpty) {
+    //   alert("All players must have a score");
+    //   return;
+    // }
 
     addRoundScores(scores.map(Number));
     setScores(players.map(() => ""));
@@ -79,7 +79,7 @@ export const PlayGrid = () => {
 
       <button
         onClick={submitAllPlayers}
-        disabled={scores.some((s) => s === "")}
+        // disabled={scores.some((s) => s === "")}
         style={{
           marginTop: "1rem",
           width: "100%",
