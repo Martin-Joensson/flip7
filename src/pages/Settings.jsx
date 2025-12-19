@@ -1,12 +1,14 @@
 import { useSettingStore } from "../stores/settingsStore";
 import { CapitalizeFirstLetter } from "../components/CapitalizeFirstLetter";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Settings = () => {
   const numberOfPlayers = useSettingStore((state) => state.numberOfPlayers);
   const setNumberOfPlayers = useSettingStore(
     (state) => state.setNumberOfPlayers
   );
+
+  const navigate = useNavigate();
 
   const viewMode = useSettingStore((state) => state.viewMode);
   const setViewMode = useSettingStore((state) => state.setViewMode);
@@ -84,9 +86,7 @@ export const Settings = () => {
         <p>Current view: {CapitalizeFirstLetter(hideHistory)}</p>
       </div>
 
-      <NavLink to="/">
-        <button>Back</button>
-      </NavLink>
+      <button onClick={() => navigate(-1)}>Back</button>
     </div>
   );
 };
