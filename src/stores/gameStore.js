@@ -8,6 +8,15 @@ const PLAYER_COLORS = [
   "#ffa502",
   "#9b59b6",
   "#00cec9",
+  " rgb(19, 19, 19)",
+  "rgb(46, 37, 133)",
+  "rgb(51, 117, 56)",
+  "rgb(93, 168, 153)",
+  "rgb(148, 203, 236)",
+  "rgb(220, 205, 125)",
+  "rgb(194, 106, 119)",
+  "rgb(159, 74, 150)",
+  "rgb(126, 41, 84)",
 ];
 
 const createPlayers = (count) =>
@@ -49,6 +58,13 @@ export const useGameStore = create((set, get) => ({
       ),
     }),
 
+  /* -------- Player color -------- */
+  setPlayerColor: (playerColor, color) =>
+    set({
+      players: get().players.map((player) =>
+        player.color === playerColor ? { ...player, color } : player
+      ),
+    }),
   /* -------- Scoring -------- */
   addRoundScores: (scoresPerPlayer) =>
     set({

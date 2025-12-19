@@ -8,6 +8,7 @@ export const PlayGrid = () => {
   const players = useGameStore((s) => s.players);
   const addRoundScores = useGameStore((s) => s.addRoundScores);
   const scoreGoal = useSettingStore((s) => s.scoreGoal);
+  const [editable, setEditable] = useState(false);
 
   const [scores, setScores] = useState(players.map(() => ""));
 
@@ -77,11 +78,10 @@ export const PlayGrid = () => {
         ))}
       </div>
 
-          <button
-              className="mt-4 CTA"
+      <button
+        className="mt-4 CTA"
         onClick={submitAllPlayers}
         // disabled={scores.some((s) => s === "")}
-
       >
         Round over, add the scores.
       </button>
