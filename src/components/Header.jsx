@@ -10,6 +10,7 @@ export const Header = () => {
   const setHideHistory = useSettingStore((state) => state.setHideHistory);
   const editable = useSettingStore((state) => state.editable);
   const setEditable = useSettingStore((state) => state.setEditable);
+  const isStarted = useGameStore((state) => state.isStarted);
 
   const handleEdit = () => {
     setEditable(!editable);
@@ -24,7 +25,12 @@ export const Header = () => {
       <NavLink to="/">
         <img className="w-10" src={logo} />
       </NavLink>
-      <button onClick={handleEdit}>Change Names and Colors</button>
+      {isStarted ? (
+        <button onClick={handleEdit}>
+          {editable ? "Save" : "Change Names and Colors"}
+        </button>
+      ) : null}
+
       <div className="text-right">
         <NavLink to="/settings">
           <p className="text-xs" src={logo}>

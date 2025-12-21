@@ -7,6 +7,7 @@ import { useSettingStore } from "../stores/settingsStore";
 export const PlayGrid = () => {
   const players = useGameStore((s) => s.players);
   const addRoundScores = useGameStore((s) => s.addRoundScores);
+  const resetScores = useGameStore((s) => s.resetScores);
   const scoreGoal = useSettingStore((s) => s.scoreGoal);
   const [editable, setEditable] = useState(false);
 
@@ -44,13 +45,14 @@ export const PlayGrid = () => {
   const submitAllPlayers = () => {
     const hasEmpty = scores.some((s) => s === "");
 
-    // if (hasEmpty) {
-    //   alert("All players must have a score");
-    //   return;
-    // }
-
     addRoundScores(scores.map(Number));
     setScores(players.map(() => ""));
+  };
+
+  const reset = (e) => {
+    if (!confirm("Are you sure?")) {
+      e.preventDefault();
+    } else resetScores();
   };
 
   return (
@@ -77,14 +79,18 @@ export const PlayGrid = () => {
           />
         ))}
       </div>
-
-      <button
-        className="mt-4 CTA"
-        onClick={submitAllPlayers}
-        // disabled={scores.some((s) => s === "")}
-      >
-        Round over, add the scores.
-      </button>
+      <div className="flex flex-col min-h-screen">
+        <button
+          className="mt-4 CTA"
+          onClick={submitAllPlayers}
+          // disabled={scores.some((s) => s === "")}
+        >
+          Round over, add the scores.
+        </button>
+        <button className="mt-4 mx-auto w-1/4 Reset" onClick={reset}>
+          Reset
+        </button>
+      </div>
     </div>
   );
 };

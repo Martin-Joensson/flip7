@@ -8,6 +8,7 @@ import { Footer } from "../components/Footer";
 export const Start = () => {
   const viewMode = useSettingStore((state) => state.viewMode);
   const startGame = useGameStore((s) => s.startGame);
+  const isStarted = useGameStore((s) => s.isStarted);
   let destination = "/play-" + viewMode;
 
   return (
@@ -15,12 +16,17 @@ export const Start = () => {
       <img className="w-1/3 m-auto" src={logo} />
       <h1>Score App</h1>
       <NavLink to={destination}>
-        <button className="CTA" onClick={startGame}>New Game</button>
+        {isStarted ? <button className="CTA">Continue</button> : null}
+      </NavLink>
+      <NavLink to={destination}>
+        <button className="CTA" onClick={startGame}>
+          New Game
+        </button>
       </NavLink>
       <NavLink to="/settings">
         <button className="bg-secondary">Settings</button>
       </NavLink>
-{/* 
+      {/* 
       <div className="colorArrayTest flex font-bold font-shadow-md">
         <div className="player1 w-20 rounded-full">...</div>
         <div className="player2 w-20 rounded-full">...</div>
