@@ -30,7 +30,7 @@ export const Confetti = () => {
       confetti.style.animation = "";
     }
 
-    for (let i = 0; i < 150; i++) {
+    for (let i = 0; i < 50; i++) {
       const confetti = document.createElement("div");
       confetti.className = "confetti-piece";
 
