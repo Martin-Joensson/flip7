@@ -16,6 +16,7 @@ const createPlayers = (count) =>
   Array.from({ length: count }, (_, i) => ({
     id: `player${i + 1}`,
     name: `Player ${i + 1}`,
+    isDefaultName: true,
     color: PLAYER_COLORS[i % PLAYER_COLORS.length],
     textColor: "#ffffff",
     scores: [],
@@ -48,7 +49,13 @@ export const useGameStore = create((set, get) => ({
   setPlayerName: (playerId, name) =>
     set({
       players: get().players.map((player) =>
-        player.id === playerId ? { ...player, name } : player
+        player.id === playerId
+          ? {
+              ...player,
+              name,
+              isDefaultName: false,
+            }
+          : player
       ),
     }),
 

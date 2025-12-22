@@ -35,7 +35,21 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
             <input
               className="px-2 rounded-full text-center"
               value={player.name}
+              placeholder="Enter Name"
+              onFocus={() => {
+                if (player.isDefaultName) {
+                  setPlayerName(player.id, "");
+                }
+              }}
               onChange={(e) => setPlayerName(player.id, e.target.value)}
+              onBlur={() => {
+                if (player.name.trim() === "") {
+                  setPlayerName(
+                    player.id,
+                    `Player ${player.id.replace("player", "")}`
+                  );
+                }
+              }}
               style={{
                 backgroundColor: player.color,
                 color: player.textColor,
