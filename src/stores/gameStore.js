@@ -10,11 +10,14 @@ const PLAYER_COLORS = [
   "#dada23",
 ];
 
+const TEXT_COLORS = ["#ffffff", "#000000"];
+
 const createPlayers = (count) =>
   Array.from({ length: count }, (_, i) => ({
     id: `player${i + 1}`,
     name: `Player ${i + 1}`,
     color: PLAYER_COLORS[i % PLAYER_COLORS.length],
+    textColor: "#ffffff",
     scores: [],
   }));
 
@@ -56,6 +59,20 @@ export const useGameStore = create((set, get) => ({
         player.color === playerColor ? { ...player, color } : player
       ),
     }),
+
+  /* -------- Text color -------- */
+  togglePlayerTextColor: (playerId) =>
+    set({
+      players: get().players.map((player) =>
+        player.id === playerId
+          ? {
+              ...player,
+              textColor: player.textColor === "#ffffff" ? "#000000" : "#ffffff",
+            }
+          : player
+      ),
+    }),
+
   /* -------- Scoring -------- */
   addRoundScores: (scoresPerPlayer) =>
     set({

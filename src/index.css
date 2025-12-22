@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  --color-darkBackground: #131516;
+  --color-lightBackground: #ffffff;
+
   --color-primary: #242424;
   --color-secondary: #ababab;
   --color-tertiary: rgba(20, 120, 200, 0.87);
@@ -51,7 +54,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #131516;
+  background-color: var(--color-darkBackground);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -121,6 +124,18 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .CTA {
@@ -237,7 +252,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: var(--color-lightBackground);
   }
   a {
     font-weight: 500;

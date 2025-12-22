@@ -17,60 +17,57 @@ export const Settings = () => {
   const hideHistory = useSettingStore((state) => state.hideHistory);
   const setHideHistory = useSettingStore((state) => state.setHideHistory);
 
-  const handleHistory = () => {
-    setHideHistory(!hideHistory);
-  };
-
   const scoreGoal = useSettingStore((state) => state.scoreGoal);
   const setScoreGoal = useSettingStore((state) => state.setScoreGoal);
+  const numericScore = scoreGoal === "" ? 0 : Number(scoreGoal);
+
+  const handleChange = (e) => {
+    let value = e.target.value;
+
+    // Only allow digits or empty string
+    if (/^\d*$/.test(value)) {
+      // Remove leading zeros, but allow empty string
+      value = value.replace(/^0+(?=\d)/, "");
+      setScoreGoal(value);
+    }
+  };
 
   return (
-    <div className="p-4 tablet:w-3/4 laptop:w-1/2 m-auto">
-      <div className="border rounded-lg p-4 my-4">
-        <h2>New Game Settings</h2>
-        {/* <div className="border rounded-lg m-10 p-4">
-          <h3>Number of players:</h3>
-          <input
-            className="w-20"
-            type="number"
-            inputMode="numeric"
-            min={1}
-            value={numberOfPlayers}
-            onChange={(e) => setNumberOfPlayers(Number(e.target.value))}
-          />
+    <>
+      <div className="p-4 tablet:w-3/4 laptop:w-2/2 m-auto">
+        <div className="border bg-flip7-beige dark:bg-flip7-rose text-darkFont dark:text-lightFont rounded-lg pt-4">
+          <h2>Settings</h2>
 
-          <p>Current: {numberOfPlayers}</p>
-        </div> */}
-
-        <div className="border rounded-lg m-10 p-4">
-          <h3>Score Goal:</h3>
-          <input
-            className="w-20"
-            type="number"
-            inputMode="numeric"
-            min={1}
-            value={scoreGoal}
-            onChange={(e) => setScoreGoal(Number(e.target.value))}
-          />
-
-          <p>Current: {scoreGoal}</p>
+          <div className="border bg-flip7- rounded-lg m-4 p-4">
+            <h3>Score Goal:</h3>
+            <input
+              className="w-20 bg-lightBackground dark:bg-darkBackground border rounded-full my-4 text-xl text-center"
+              type="number"
+              inputMode="numeric"
+              style={{
+                width: "100%",
+                padding: "0.5rem",
+                marginBottom: "0.5rem",
+              }}
+              min={0}
+              value={scoreGoal}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="m-4 border rounded-lg p-4">
+            <h3>Round History:</h3>
+            <div className="my-4">
+              <ToggleSwitch
+                size="md"
+                checked={!hideHistory}
+                onChange={() => setHideHistory(!hideHistory)}
+              />
+              {hideHistory ? <p>Hide rounds</p> : <p>Show Rounds</p>}
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className="border rounded-lg p-4 my-4">
-        <h2>Current Game Settings:</h2>
-        <div className="m-10 border rounded-lg p-4">
-          <h3>Show Round History:</h3>
-          <ToggleSwitch
-            size="md"
-            checked={!hideHistory}
-            onChange={() => setHideHistory(!hideHistory)}
-          />
-          {hideHistory ? <p>Hiding rounds</p> : <p>Showing Rounds</p>}
-        </div>
-      </div>
-
       <button onClick={() => navigate(-1)}>Back</button>
-    </div>
+    </>
   );
 };

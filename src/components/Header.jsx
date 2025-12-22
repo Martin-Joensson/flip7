@@ -28,7 +28,7 @@ export const Header = () => {
           checked={!hideHistory}
           onChange={() => setHideHistory(!hideHistory)}
         />
-        <div className="opacity-50">
+        <div className="opacity-25">
           {hideHistory ? <p>Hiding rounds</p> : <p>Showing Rounds</p>}
         </div>
       </div>

@@ -6,16 +6,12 @@ function PlayerRoundHistory({ scores }) {
   return (
     <div style={{ marginTop: "0.5rem" }}>
       {scores.map((score, index) => (
-        <div
+          <div
+              className="flex justify-between text-sm"
           key={index}
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            fontSize: "0.9rem",
-          }}
         >
           <span>Round {index + 1}</span>
-          <span>{score}</span>
+          <span className="font-bold">{score}</span>
         </div>
       ))}
     </div>

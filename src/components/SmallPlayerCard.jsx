@@ -4,13 +4,17 @@ import PlayerRoundHistory from "./PlayerRoundHistory";
 import crown from "../assets/crown3.png";
 import { useState } from "react";
 import { Confetti } from "./Confetti";
+import { ToggleSwitch } from "./ToggleSwitch";
 
 function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
   const setPlayerName = useGameStore((s) => s.setPlayerName);
   const setPlayerColor = useGameStore((s) => s.setPlayerColor);
+  const togglePlayerTextColor = useGameStore((s) => s.togglePlayerTextColor);
   const hideHistory = useSettingStore((s) => s.hideHistory);
   const editable = useSettingStore((s) => s.editable);
   let initialValue = 0;
+
+  const isLightText = player.textColor === "#4fbab6";
 
   return (
     <div className="relative p-1 border rounded-lg min-w-12 dark:bg-flip7-dark bg-flip7-beige ">
@@ -33,12 +37,13 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
               value={player.name}
               onChange={(e) => setPlayerName(player.id, e.target.value)}
               style={{
+                backgroundColor: player.color,
+                color: player.textColor,
                 border: "1px solid #aaa",
                 rounded: "100px",
                 fontSize: "1.1rem",
                 fontWeight: "bold",
                 width: "100%",
-                marginBottom: "0.5rem",
               }}
             />
           </>
@@ -48,7 +53,7 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
             style={{
               backgroundColor: player.color,
               border: "none",
-              color: "#fff",
+              color: player.textColor,
               fontSize: "1.1rem",
               fontWeight: "bold",
               width: "100%",
@@ -58,12 +63,26 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
             {player.name}
           </p>
         )}
+        {editable ? (
+          <div className="flex justify-center items-center space-x-2 my-1">
+            <p>Text color:</p>
+
+            <ToggleSwitch
+              color1="bg-accent"
+              color2="bg-primary"
+              border="true"
+              size="sm"
+              checked={player.textColor === "#ffffff"}
+              onChange={() => togglePlayerTextColor(player.id)}
+            />
+          </div>
+        ) : null}
       </div>
       {editable ? (
-        <div className="flex flex-col m-auto my-4">
+        <div className="flex justify-center items-center space-x-2">
           <label>Change Color:</label>
           <input
-            className="w-full rounded-full cursor-pointer border-2 border-white"
+            className="h-5 w-8 rounded-full cursor-pointer border border-white"
             type="color"
             value={player.color}
             onChange={(e) => setPlayerColor(player.color, e.target.value)}
@@ -72,7 +91,7 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
       ) : null}
 
       {editable ? null : (
-        <h3>
+        <h3 className="font-bold">
           {player.scores.reduce(
             (accumulator, currentValue) => accumulator + currentValue,
             initialValue
@@ -87,16 +106,12 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
 
       {editable ? null : (
         <input
+          className="w-full p-2 my-2 text-sm text-center border rounded-full"
           type="number"
           inputMode="numeric"
           value={score}
           onChange={(e) => onScoreChange(e.target.value)}
-          placeholder="Score"
-          style={{
-            width: "100%",
-            padding: "0.5rem",
-            marginBottom: "0.5rem",
-          }}
+          placeholder="Enter score"
         />
       )}
     </div>
