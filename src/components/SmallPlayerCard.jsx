@@ -13,12 +13,12 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
   let initialValue = 0;
 
   return (
-    <div className="relative p-1 border rounded-lg min-w-12">
+    <div className="relative p-1 border rounded-lg min-w-12 dark:bg-flip7-dark bg-flip7-beige ">
       {isWinner ? (
         <>
           <Confetti />
           <img
-            className="w-20 absolute -top-10 rotate-10 right-1"
+            className="w-20 absolute -top-10 rotate-10 right-1 animate-bounce"
             src={crown}
           />
         </>
@@ -91,6 +91,7 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
           placeholder="Score"
           style={{
             width: "100%",
+            padding: "0.5rem",
             marginBottom: "0.5rem",
           }}
         />

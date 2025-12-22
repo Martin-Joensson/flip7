@@ -4,24 +4,23 @@
   --color-primary: #242424;
   --color-secondary: #ababab;
   --color-tertiary: rgba(20, 120, 200, 0.87);
+  --color-accent: rgba(255, 255, 255, 0.87);
   --color-button: rgba(67, 67, 67, 0.87);
 
-  --color-hover: rgba(255, 67, 67, 0.87);
+  --color-hover: rgba(50, 50, 50, 0.17);
 
   --color-darkFont: rgba(0, 0, 0, 1);
   --color-lightFont: rgba(240, 240, 240, 1);
 
-  /* Colorblind accessible colors for players */
-  --color-player1: rgb(9, 9, 9);
-  --color-player2: rgb(46, 37, 133);
-  --color-player3: rgb(51, 117, 56);
-  --color-player4: rgb(93, 168, 153);
-  --color-player5: rgb(148, 203, 236);
-  --color-player6: rgb(220, 205, 125);
-  --color-player7: rgb(194, 106, 119);
-  --color-player8: rgb(159, 74, 150);
-  --color-player9: rgb(126, 41, 84);
-  --color-player10: rgb(221, 221, 221);
+  /* Flip 7 colors  */
+  --color-flip7-teal: #4fbab6;
+  --color-flip7-orange: #ea6250;
+  --color-flip7-dark: #1b1b1b;
+  --color-flip7-blue: #7aa4d6;
+  --color-flip7-yellow: #ffdf51;
+  --color-flip7-beige: #fff6d9;
+  --color-flip7-rose: #ea4e65;
+  --color-flip7-green: #dada23;
 
   --font-main: Raleway, sans-serif;
   --font-headerFont: "Poiret One", sans-serif;
@@ -33,17 +32,13 @@
   --breakpoint-desktop: 80rem;
   --breakpoint-wide: 100rem;
 
-  --grid-template-columns-auto-fit: repeat(auto-fit, minmax(min(calc(var(--spacing) * 36), 100%), 1fr));
-
-  --stripes: 
-  background-image: repeating-linear-gradient(
-    45deg,
-    #ffffff4g,
-    #ffffff4g 5%,
-    #ffffff99 5%,
-    #ffffff99 20%
+  --grid-template-columns-auto-fit: repeat(
+    auto-fit,
+    minmax(min(calc(var(--spacing) * 36), 100%), 1fr)
   );
 
+  /* --stripes: 
+  background-image: repeating-linear-gradient(45deg #ffffff4g,#ffffff4g 5%,#ffffff99 5%, #ffffff99 20%); */
 }
 
 :root {
@@ -64,8 +59,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-    --stripes: 
-  repeating-linear-gradient(
+  --stripes: repeating-linear-gradient(
     45deg,
     #ffffff55,
     #ffffff55 5%,
@@ -101,6 +95,7 @@ h2 {
   font-size: 1.8em;
   line-height: 1.1;
 }
+
 h3 {
   font-size: 1.4em;
   line-height: 1.1;
@@ -117,22 +112,48 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
-  border-color: #646cff;
+  border-color: var(--color-flip7-teal);
+  color: var(--color-flip7-teal);
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
 .CTA {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
   background: var(--color-tertiary);
   color: var(--color-lightFont);
+}
+
+.CTA:hover {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.CTA:focus,
+.CTA:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }
 
 .Reset {
   background: var(--color-red-700);
   color: var(--color-lightFont);
+}
+
+.Reset:hover {
+  border: 1px solid #fff;
+  color: #fff;
 }
 
 .confetti-wrapper {
@@ -142,7 +163,7 @@ button:focus-visible {
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden; 
+  overflow: hidden;
   pointer-events: none;
 }
 
@@ -166,7 +187,6 @@ button:focus-visible {
   animation: confetti-fall var(--fall-duration, 4s) linear forwards;
   will-change: transform;
 }
-
 
 /* Randomize confetti properties */
 .confetti-piece:nth-child(1) {
@@ -228,9 +248,15 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #e9e9e9;
+  }
+
+  .CTA:hover {
+    border: 1px solid #000;
+    color: #fff;
+  }
+  .Reset:hover {
+    border: 1px solid #000;
+    color: #fff;
   }
 }
-
-
-

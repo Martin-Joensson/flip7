@@ -2,21 +2,12 @@ import { create } from "zustand";
 import { useSettingStore } from "./settingsStore";
 
 const PLAYER_COLORS = [
-  "#ff4757",
-  "#1e90ff",
-  "#2ed573",
-  "#ffa502",
-  "#9b59b6",
-  "#00cec9",
-  " rgb(19, 19, 19)",
-  "rgb(46, 37, 133)",
-  "rgb(51, 117, 56)",
-  "rgb(93, 168, 153)",
-  "rgb(148, 203, 236)",
-  "rgb(220, 205, 125)",
-  "rgb(194, 106, 119)",
-  "rgb(159, 74, 150)",
-  "rgb(126, 41, 84)",
+  "#4fbab6",
+  "#ea6250",
+  "#7aa4d6",
+  "#ffdf51",
+  "#ea4e65",
+  "#dada23",
 ];
 
 const createPlayers = (count) =>

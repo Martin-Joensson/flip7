@@ -77,7 +77,7 @@ export const PlayGrid = () => {
         ))}
       </div>
       <div className="flex flex-col min-h-100 gap-2 justify-between">
-        {editable ? /*<p className="mt-4">Editing Players</p>*/ null : (
+        {editable ? null : (
           <button className="mt-4 CTA" onClick={submitAllPlayers}>
             Round over, add the scores.
           </button>
