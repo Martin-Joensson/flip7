@@ -14,12 +14,11 @@ export const PlayGrid = () => {
   const editable = useSettingStore((state) => state.editable);
   const setEditable = useSettingStore((state) => state.setEditable);
 
-    const [scores, setScores] = useState(players.map(() => ""));
-      const [isWinner, setIsWinner] = useState();
+  const [scores, setScores] = useState(players.map(() => ""));
+  const [isWinner, setIsWinner] = useState();
 
   const hideHistory = useSettingStore((state) => state.hideHistory);
   const setHideHistory = useSettingStore((state) => state.setHideHistory);
-
 
   const handleHistory = () => {
     setHideHistory(!hideHistory);
@@ -40,6 +39,8 @@ export const PlayGrid = () => {
 
     addRoundScores(scores.map(Number));
     setScores(players.map(() => ""));
+
+    window.scrollTo(0, 0);
   };
 
   const reset = (e) => {
