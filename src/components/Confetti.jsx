@@ -1,4 +1,4 @@
-import React from "react";
+import { useRef,useEffect } from "react";
 
 export const Confetti = () => {
   const confettiWrapperRef = useRef(null);
@@ -28,7 +28,7 @@ export const Confetti = () => {
   return (
     <div
       ref={confettiWrapperRef}
-      className="min-h-screen w-screen  relative"
+      className="confetti-wrapper"
     ></div>
   );
 };

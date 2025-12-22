@@ -4,6 +4,7 @@ import SmallPlayerCard from "../components/SmallPlayerCard";
 import { NavLink } from "react-router-dom";
 import { useSettingStore } from "../stores/settingsStore";
 import { CapitalizeFirstLetter } from "../components/CapitalizeFirstLetter";
+import { Confetti } from "../components/Confetti";
 
 export const PlayGrid = () => {
   const players = useGameStore((s) => s.players);
@@ -12,12 +13,13 @@ export const PlayGrid = () => {
   const scoreGoal = useSettingStore((s) => s.scoreGoal);
   const editable = useSettingStore((state) => state.editable);
   const setEditable = useSettingStore((state) => state.setEditable);
-  const isStarted = useGameStore((state) => state.isStarted);
 
-  const [scores, setScores] = useState(players.map(() => ""));
+    const [scores, setScores] = useState(players.map(() => ""));
+      const [isWinner, setIsWinner] = useState();
 
   const hideHistory = useSettingStore((state) => state.hideHistory);
   const setHideHistory = useSettingStore((state) => state.setHideHistory);
+
 
   const handleHistory = () => {
     setHideHistory(!hideHistory);
@@ -51,7 +53,7 @@ export const PlayGrid = () => {
   };
 
   return (
-    <div className=" p-4">
+    <div className="w-full p-4">
       <div className="grid grid-cols-auto-fit gap-1">
         {players.map((player, index) => (
           <SmallPlayerCard
@@ -81,7 +83,7 @@ export const PlayGrid = () => {
           </button>
         )}
 
-        <div className="w-1/2 mx-auto flex flex-col gap-2">
+        <div className="w-1/2 mx-auto my-4 flex flex-col gap-2">
           <button className="mx-auto w-full" onClick={handleEdit}>
             {editable ? "Save" : "Edit Players"}
           </button>

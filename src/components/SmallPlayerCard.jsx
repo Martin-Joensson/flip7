@@ -3,6 +3,7 @@ import { useSettingStore } from "../stores/settingsStore";
 import PlayerRoundHistory from "./PlayerRoundHistory";
 import crown from "../assets/crown3.png";
 import { useState } from "react";
+import { Confetti } from "./Confetti";
 
 function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
   const setPlayerName = useGameStore((s) => s.setPlayerName);
@@ -14,7 +15,13 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
   return (
     <div className="relative p-1 border rounded-lg min-w-12">
       {isWinner ? (
-        <img className="w-20 absolute -top-10 rotate-10 right-1" src={crown} />
+        <>
+          <Confetti />
+          <img
+            className="w-20 absolute -top-10 rotate-10 right-1"
+            src={crown}
+          />
+        </>
       ) : null}
       {/* Editable name */}
       <div>
@@ -54,7 +61,7 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
         )}
       </div>
       {editable ? (
-        <div className="flex flex-col m-auto">
+        <div className="flex flex-col m-auto my-4">
           <label>Change Color:</label>
           <input
             className="w-full rounded-full cursor-pointer border-2 border-white"
@@ -64,12 +71,15 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
           />
         </div>
       ) : null}
-      <h3>
-        {player.scores.reduce(
-          (accumulator, currentValue) => accumulator + currentValue,
-          initialValue
-        )}
-      </h3>
+
+      {editable ? null : (
+        <h3>
+          {player.scores.reduce(
+            (accumulator, currentValue) => accumulator + currentValue,
+            initialValue
+          )}
+        </h3>
+      )}
 
       {hideHistory ? null : <PlayerRoundHistory scores={player.scores} />}
       {editable ? null : (
