@@ -11,10 +11,6 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
   const editable = useSettingStore((s) => s.editable);
   let initialValue = 0;
 
-  const [tempColor, setTempColor] = useState(player.color);
-
-  const handleColor = (e) => {};
-
   return (
     <div className="relative p-1 border rounded-lg min-w-12">
       {isWinner ? (
@@ -24,7 +20,7 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
       <div>
         {editable ? (
           <>
-            <label>Change Name</label>
+            <label>Change Name:</label>
             <input
               className="px-2"
               value={player.name}
@@ -59,7 +55,7 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
       </div>
       {editable ? (
         <div className="flex flex-col m-auto">
-          <label>Change Color</label>
+          <label>Change Color:</label>
           <input
             className="w-full rounded-full cursor-pointer border-2 border-white"
             type="color"
@@ -79,6 +75,7 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
       {editable ? null : (
         <input
           type="number"
+          inputMode="numeric"
           value={score}
           onChange={(e) => onScoreChange(e.target.value)}
           placeholder="Score"

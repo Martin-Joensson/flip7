@@ -1,4 +1,3 @@
-import React from "react";
 import logo from "../assets/flip7logo.webp";
 import { NavLink } from "react-router-dom";
 import { useSettingStore } from "../stores/settingsStore";
@@ -15,10 +14,10 @@ export const Start = () => {
     <div className="flex flex-col gap-2">
       <img className="w-1/3 m-auto" src={logo} />
       <h1>Score App</h1>
-      <NavLink to={destination}>
+      <NavLink to={"/play"}>
         {isStarted ? <button className="CTA">Continue</button> : null}
       </NavLink>
-      <NavLink to={destination}>
+      <NavLink to={"/play"}>
         <button className="CTA" onClick={startGame}>
           New Game
         </button>

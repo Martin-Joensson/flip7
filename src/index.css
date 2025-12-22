@@ -146,88 +146,61 @@ button:focus-visible {
   background: var(--color-red-700);
 }
 
-/* Player colors */
-.player1 {
-  background: var(--color-player1);
-  color: var(--color-lightFont);
+.confetti-wrapper {
+  position: absolute;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*pointer-events: none; /* Prevent interaction */
+  /* overflow: hidden; */
 }
 
-.player2 {
-  background: var(--color-player2);
-  color: var(--color-lightFont);
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100%) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.8;
+  }
 }
-.player3 {
-  background: var(--color-player3);
-  color: var(--color-lightFont);
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 20px;
+  background: var(--confetti-color, red);
+  opacity: 0.9;
+  animation: confetti-fall var(--fall-duration, 4s) linear infinite;
 }
-.player4 {
-  background: var(--color-player4);
-  color: var(--color-lightFont);
+
+/* Randomize confetti properties */
+.confetti-piece:nth-child(1) {
+  left: 10%;
+  --confetti-color: #ff6347;
+  --fall-duration: 3s;
 }
-.player5 {
-  background: var(--color-player5);
-  color: var(--color-darkFont);
+.confetti-piece:nth-child(2) {
+  left: 25%;
+  --confetti-color: #ffa500;
+  --fall-duration: 5s;
 }
-.player6 {
-  background: var(--color-player6);
-  color: var(--color-darkFont);
+.confetti-piece:nth-child(3) {
+  left: 40%;
+  --confetti-color: #32cd32;
+  --fall-duration: 4.5s;
 }
-.player7 {
-  background: var(--color-player7);
-  color: var(--color-lightFont);
+.confetti-piece:nth-child(4) {
+  left: 60%;
+  --confetti-color: #1e90ff;
+  --fall-duration: 3.5s;
 }
-.player8 {
-  background: var(--color-player8);
-  color: var(--color-lightFont);
-}
-.player9 {
-  background: var(--color-player9);
-  color: var(--color-lightFont);
-}
-.player10 {
-  background: var(--color-player1);
-  color: var(--color-lightFont);
-  background-image: var(--stripes);
-}
-.player11 {
-  background: var(--color-player2);
-  color: var(--color-lightFont);
-  background-image: var(--stripes);
-}
-.player12 {
-  background: var(--color-player3);
-  color: var(--color-lightFont);
-    background-image: var(--stripes);
-}
-.player13 {
-  background: var(--color-player4);
-  color: var(--color-darkFont);
-  background-image: var(--stripes);
-}
-.player14 {
-  background: var(--color-player5);
-  color: var(--color-darkFont);
-  background-image: var(--stripes);
-}
-.player15 {
-  background: var(--color-player6);
-  color: var(--color-darkFont);
-  background-image: var(--stripes);
-}
-.player16 {
-  background: var(--color-player7);
-  color: var(--color-darkFont);
-  background-image: var(--stripes);
-}
-.player17 {
-  background: var(--color-player8);
-  color: var(--color-lightFont);
-  background-image: var(--stripes);
-}
-.player18 {
-  background: var(--color-player9);
-  color: var(--color-lightFont);
-  background-image: var(--stripes);
+.confetti-piece:nth-child(5) {
+  left: 80%;
+  --confetti-color: #ff69b4;
+  --fall-duration: 6s;
 }
 
 .fade {
@@ -264,3 +237,6 @@ button:focus-visible {
   margin: 0 auto;
   text-align: center;
 }
+
+
+

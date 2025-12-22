@@ -20,32 +20,34 @@ export const Settings = () => {
   const setScoreGoal = useSettingStore((state) => state.setScoreGoal);
 
   return (
-    <div>
-      <h2>Settings</h2>
-      <div className="border rounded-lg m-10 p-4">
-        <h3>Number of players:</h3>
-        <input
-          className="w-20"
-          type="number"
-          min={1}
-          value={numberOfPlayers}
-          onChange={(e) => setNumberOfPlayers(Number(e.target.value))}
-        />
+    <div className="p-4">
+      <div className="border rounded-lg my-4">
+        <h2>New Game Settings</h2>
+        <div className="border rounded-lg m-10 p-4">
+          <h3>Number of players:</h3>
+          <input
+            className="w-20"
+            type="number"
+            min={1}
+            value={numberOfPlayers}
+            onChange={(e) => setNumberOfPlayers(Number(e.target.value))}
+          />
 
-        <p>Current: {numberOfPlayers}</p>
-      </div>
+          <p>Current: {numberOfPlayers}</p>
+        </div>
 
-      <div className="border rounded-lg m-10 p-4">
-        <h3>Score Goal:</h3>
-        <input
-          className="w-20"
-          type="number"
-          min={1}
-          value={scoreGoal}
-          onChange={(e) => setScoreGoal(Number(e.target.value))}
-        />
+        <div className="border rounded-lg m-10 p-4">
+          <h3>Score Goal:</h3>
+          <input
+            className="w-20"
+            type="number"
+            min={1}
+            value={scoreGoal}
+            onChange={(e) => setScoreGoal(Number(e.target.value))}
+          />
 
-        <p>Current: {scoreGoal}</p>
+          <p>Current: {scoreGoal}</p>
+        </div>
       </div>
 
       {/* <div className="border rounded-lg m-10 p-4">
@@ -67,23 +69,26 @@ export const Settings = () => {
         <p>Current view: {CapitalizeFirstLetter(viewMode)}</p>
       </div> */}
 
-      <div className="border rounded-lg m-10 p-4">
-        <h3>Hide Round History:</h3>
-        <button
-          onClick={() => setHideHistory(true)}
-          disabled={viewMode === true}
-        >
-          Yes, hide it.
-        </button>
+      <div className="border rounded-lg p-4 my-4">
+        <h2>Current Game Settings:</h2>
+        <div className="m-10 border rounded-lg p-4">
+          <h3>Hide Round History:</h3>
+          <button
+            onClick={() => setHideHistory(true)}
+            disabled={viewMode === true}
+          >
+            Hide it.
+          </button>
 
-        <button
-          onClick={() => setHideHistory(false)}
-          disabled={viewMode === false}
-        >
-          No, show it.
-        </button>
+          <button
+            onClick={() => setHideHistory(false)}
+            disabled={viewMode === false}
+          >
+            Show it.
+          </button>
 
-        <p>Current view: {CapitalizeFirstLetter(hideHistory)}</p>
+          <p>Current view: {CapitalizeFirstLetter(hideHistory)}</p>
+        </div>
       </div>
 
       <button onClick={() => navigate(-1)}>Back</button>

@@ -3,15 +3,25 @@ import { useGameStore } from "../stores/gameStore";
 import SmallPlayerCard from "../components/SmallPlayerCard";
 import { NavLink } from "react-router-dom";
 import { useSettingStore } from "../stores/settingsStore";
+import { CapitalizeFirstLetter } from "../components/CapitalizeFirstLetter";
 
 export const PlayGrid = () => {
   const players = useGameStore((s) => s.players);
   const addRoundScores = useGameStore((s) => s.addRoundScores);
   const resetScores = useGameStore((s) => s.resetScores);
   const scoreGoal = useSettingStore((s) => s.scoreGoal);
-  const [editable, setEditable] = useState(false);
+  const editable = useSettingStore((state) => state.editable);
+  const setEditable = useSettingStore((state) => state.setEditable);
+  const isStarted = useGameStore((state) => state.isStarted);
 
   const [scores, setScores] = useState(players.map(() => ""));
+
+  const hideHistory = useSettingStore((state) => state.hideHistory);
+  const setHideHistory = useSettingStore((state) => state.setHideHistory);
+
+  const handleHistory = () => {
+    setHideHistory(!hideHistory);
+  };
 
   // Compute the leading player over winScore
   const totalScores = players.map((p) =>
@@ -21,25 +31,6 @@ export const PlayGrid = () => {
   const leadingPlayerId = players.find(
     (p, i) => totalScores[i] === maxScore
   )?.id;
-
-  const updateScore = (index, value) => {
-    const next = [...scores];
-    next[index] = value;
-    setScores(next);
-  };
-
-  /* -------- Individual submit -------- */
-  const submitSinglePlayer = (index) => {
-    const numericScores = players.map((_, i) =>
-      i === index ? Number(scores[i]) : 0
-    );
-
-    addRoundScores(numericScores);
-
-    const next = [...scores];
-    next[index] = "";
-    setScores(next);
-  };
 
   /* -------- Global submit -------- */
   const submitAllPlayers = () => {
@@ -55,8 +46,12 @@ export const PlayGrid = () => {
     } else resetScores();
   };
 
+  const handleEdit = () => {
+    setEditable(!editable);
+  };
+
   return (
-    <div>
+    <div className=" p-4">
       <div className="grid grid-cols-auto-fit gap-1">
         {players.map((player, index) => (
           <SmallPlayerCard
@@ -79,7 +74,7 @@ export const PlayGrid = () => {
           />
         ))}
       </div>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-100 gap-2 justify-between">
         <button
           className="mt-4 CTA"
           onClick={submitAllPlayers}
@@ -87,9 +82,21 @@ export const PlayGrid = () => {
         >
           Round over, add the scores.
         </button>
-        <button className="mt-4 mx-auto w-1/4 Reset" onClick={reset}>
-          Reset
-        </button>
+
+        <div className="w-1/2 mx-auto flex flex-col gap-2">
+          <button className="mx-auto w-full" onClick={handleEdit}>
+            {editable ? "Save" : "Change Names and Colors"}
+          </button>
+          <NavLink to="/settings">
+            <button className="text-xs w-full">Settings</button>
+          </NavLink>
+          <button className="text-xs cursor-pointer" onClick={handleHistory}>
+            {hideHistory ? "Show Rounds" : "Hide Rounds"}
+          </button>
+          <button className="mt-4 mx-auto  Reset" onClick={reset}>
+            Reset
+          </button>
+        </div>
       </div>
     </div>
   );
