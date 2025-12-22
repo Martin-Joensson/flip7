@@ -45,7 +45,7 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
           </>
         ) : (
           <p
-            className="px-2"
+            className="px-2 rounded-t-sm"
             style={{
               backgroundColor: player.color,
               border: "none",

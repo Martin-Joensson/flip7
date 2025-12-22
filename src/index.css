@@ -152,44 +152,56 @@ button:focus-visible {
     opacity: 1;
   }
   100% {
-    transform: translateY(100vh) rotate(360deg);
+    transform: translateY(105vh) rotate(360deg);
     opacity: 0.8;
   }
 }
 .confetti-piece {
   position: absolute;
+  top: -20px;
   width: 10px;
   height: 20px;
-  background: var(--confetti-color, red);
   opacity: 0.9;
-  animation: confetti-fall var(--fall-duration, 4s) linear infinite;
+  background: var(--confetti-color, red);
+  animation: confetti-fall var(--fall-duration, 4s) linear forwards;
+  will-change: transform;
 }
+
 
 /* Randomize confetti properties */
 .confetti-piece:nth-child(1) {
   left: 10%;
   --confetti-color: #ff6347;
   --fall-duration: 3s;
+  --delay: 0s;
 }
+
 .confetti-piece:nth-child(2) {
   left: 25%;
   --confetti-color: #ffa500;
   --fall-duration: 5s;
+  --delay: -1s;
 }
+
 .confetti-piece:nth-child(3) {
   left: 40%;
   --confetti-color: #32cd32;
   --fall-duration: 4.5s;
+  --delay: -2s;
 }
+
 .confetti-piece:nth-child(4) {
   left: 60%;
   --confetti-color: #1e90ff;
   --fall-duration: 3.5s;
+  --delay: -3s;
 }
+
 .confetti-piece:nth-child(5) {
   left: 80%;
   --confetti-color: #ff69b4;
   --fall-duration: 6s;
+  --delay: -4s;
 }
 
 .fade {
