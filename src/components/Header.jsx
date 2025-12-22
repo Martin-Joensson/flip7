@@ -5,6 +5,7 @@ import { CapitalizeFirstLetter } from "./CapitalizeFirstLetter";
 import { useGameStore } from "../stores/gameStore";
 import { useEffect } from "react";
 import { Confetti } from "./Confetti";
+import { ToggleSwitch } from "./ToggleSwitch";
 
 export const Header = () => {
   const viewMode = useSettingStore((state) => state.viewMode);
@@ -16,11 +17,20 @@ export const Header = () => {
   };
 
   return (
-      <div className="flex justify-between mb-4 p-2">
+    <div className="flex justify-between p-2">
       <NavLink to="/">
-        <img className="w-10" src={logo} />
+        <img className="w-14" src={logo} />
       </NavLink>
       <div className="text-right">
+
+        <ToggleSwitch
+          size="sm"
+          checked={!hideHistory}
+          onChange={() => setHideHistory(!hideHistory)}
+        />
+        <div className="opacity-50">
+          {hideHistory ? <p>Hiding rounds</p> : <p>Showing Rounds</p>}
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useSettingStore } from "../stores/settingsStore";
 import { CapitalizeFirstLetter } from "../components/CapitalizeFirstLetter";
 import { useNavigate } from "react-router-dom";
+import { ToggleSwitch } from "../components/ToggleSwitch";
 
 export const Settings = () => {
   const numberOfPlayers = useSettingStore((state) => state.numberOfPlayers);
@@ -24,10 +25,10 @@ export const Settings = () => {
   const setScoreGoal = useSettingStore((state) => state.setScoreGoal);
 
   return (
-    <div className="p-4">
+    <div className="p-4 tablet:w-3/4 laptop:w-1/2 m-auto">
       <div className="border rounded-lg p-4 my-4">
         <h2>New Game Settings</h2>
-        <div className="border rounded-lg m-10 p-4">
+        {/* <div className="border rounded-lg m-10 p-4">
           <h3>Number of players:</h3>
           <input
             className="w-20"
@@ -39,7 +40,7 @@ export const Settings = () => {
           />
 
           <p>Current: {numberOfPlayers}</p>
-        </div>
+        </div> */}
 
         <div className="border rounded-lg m-10 p-4">
           <h3>Score Goal:</h3>
@@ -59,18 +60,13 @@ export const Settings = () => {
       <div className="border rounded-lg p-4 my-4">
         <h2>Current Game Settings:</h2>
         <div className="m-10 border rounded-lg p-4">
-          <h3>Hide Round History:</h3>
-
-          <button className="text-xs cursor-pointer" onClick={handleHistory}>
-            {hideHistory ? "Show Rounds" : "Hide Rounds"}
-          </button>
-
-          <p>
-            Currently:{" "}
-            {hideHistory
-              ? "Hiding individual round scores."
-              : "Showing individual round scores."}
-          </p>
+          <h3>Show Round History:</h3>
+          <ToggleSwitch
+            size="md"
+            checked={!hideHistory}
+            onChange={() => setHideHistory(!hideHistory)}
+          />
+          {hideHistory ? <p>Hiding rounds</p> : <p>Showing Rounds</p>}
         </div>
       </div>
 

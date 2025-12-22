@@ -29,13 +29,12 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
           <>
             <label>Change Name:</label>
             <input
-              className="px-2"
+              className="px-2 rounded-full text-center"
               value={player.name}
               onChange={(e) => setPlayerName(player.id, e.target.value)}
               style={{
-                background: "black",
-                border: "none",
-                color: "#fff",
+                border: "1px solid #aaa",
+                rounded: "100px",
                 fontSize: "1.1rem",
                 fontWeight: "bold",
                 width: "100%",
@@ -80,8 +79,12 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
           )}
         </h3>
       )}
+      {editable ? null : (
+        <>
+          {hideHistory ? null : <PlayerRoundHistory scores={player.scores} />}
+        </>
+      )}
 
-      {hideHistory ? null : <PlayerRoundHistory scores={player.scores} />}
       {editable ? null : (
         <input
           type="number"
