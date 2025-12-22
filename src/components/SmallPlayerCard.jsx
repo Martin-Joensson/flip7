@@ -64,12 +64,14 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
           </p>
         )}
         {editable ? (
-          <div className="flex justify-center items-center space-x-2 my-1">
+          <div className="flex justify-between items-center space-x-2 my-2">
             <p>Text color:</p>
 
             <ToggleSwitch
               color1="bg-accent"
               color2="bg-primary"
+              pip1="bg-black"
+              pip2="bg-white"
               border="true"
               size="sm"
               checked={player.textColor === "#ffffff"}
@@ -79,10 +81,10 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
         ) : null}
       </div>
       {editable ? (
-        <div className="flex justify-center items-center space-x-2">
+        <div className="flex justify-between items-center space-x-2">
           <label>Change Color:</label>
           <input
-            className="h-5 w-8 rounded-full cursor-pointer border border-white"
+            className="h-4 w-8 rounded-full cursor-pointer border border-white"
             type="color"
             value={player.color}
             onChange={(e) => setPlayerColor(player.color, e.target.value)}

@@ -2,7 +2,9 @@ export const ToggleSwitch = ({
   checked,
   onChange,
   color1,
-    color2,
+  color2,
+  pip1,
+  pip2,
   border,
   size = "md",
 }) => {
@@ -15,10 +17,12 @@ export const ToggleSwitch = ({
 
   const s = sizes[size] || sizes.md;
 
-    const bgColor1 = color1 || "bg-flip7-teal";
-    const bgColor2 = color2 || "bg-gray-300";
+  const bgColor1 = color1 || "bg-flip7-teal";
+  const bgColor2 = color2 || "bg-gray-300";
+  const pipColor1 = pip1 || "#ffffff";
+  const pipColor2 = pip2 || "#FFF";
 
-    const frame = border || ""
+  const frame = border || "";
 
   return (
     <label className={`relative inline-block ${s.w} ${s.h}`}>
@@ -30,12 +34,15 @@ export const ToggleSwitch = ({
       />
       <span
         className={`absolute cursor-pointer top-0 left-0 right-0 bottom-0  rounded-full transition-colors duration-200
-                    ${checked ? bgColor1 : bgColor2} ${border ? "border rounded-full" : null}`}
+                    ${checked ? bgColor1 : bgColor2} ${
+          border ? "border rounded-full" : null
+        }`}
       ></span>
       <span
-        className={`absolute bg-white rounded-full transition-transform duration-200
+        className={`absolute rounded-full transition-transform duration-200
                     ${s.knob} left-1 top-1
-                    ${checked ? s.translate : ""}`}
+                    ${checked ? s.translate : ""}
+                    ${checked ? pipColor1 : pipColor2}`}
       ></span>
     </label>
   );
