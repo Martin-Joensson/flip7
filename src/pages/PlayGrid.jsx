@@ -75,17 +75,15 @@ export const PlayGrid = () => {
         ))}
       </div>
       <div className="flex flex-col min-h-100 gap-2 justify-between">
-        <button
-          className="mt-4 CTA"
-          onClick={submitAllPlayers}
-          // disabled={scores.some((s) => s === "")}
-        >
-          Round over, add the scores.
-        </button>
+        {editable ? /*<p className="mt-4">Editing Players</p>*/ null : (
+          <button className="mt-4 CTA" onClick={submitAllPlayers}>
+            Round over, add the scores.
+          </button>
+        )}
 
         <div className="w-1/2 mx-auto flex flex-col gap-2">
           <button className="mx-auto w-full" onClick={handleEdit}>
-            {editable ? "Save" : "Change Names and Colors"}
+            {editable ? "Save" : "Edit Players"}
           </button>
           <NavLink to="/settings">
             <button className="text-xs w-full">Settings</button>

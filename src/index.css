@@ -22,12 +22,6 @@
   --color-player8: rgb(159, 74, 150);
   --color-player9: rgb(126, 41, 84);
   --color-player10: rgb(221, 221, 221);
-  --color-player11: rgb(221, 221, 221);
-  --color-player12: rgb(221, 221, 221);
-  --color-player13: rgb(221, 221, 221);
-  --color-player14: rgb(221, 221, 221);
-  --color-player15: rgb(221, 221, 221);
-  --color-player16: rgb(221, 221, 221);
 
   --font-main: Raleway, sans-serif;
   --font-headerFont: "Poiret One", sans-serif;
@@ -101,11 +95,11 @@ h1 {
 }
 
 h2 {
-  font-size: 2.4em;
+  font-size: 1.8em;
   line-height: 1.1;
 }
 h3 {
-  font-size: 2.0em;
+  font-size: 1.4em;
   line-height: 1.1;
 }
 
@@ -128,22 +122,14 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* .stripes {
-  background-image: repeating-linear-gradient(
-    45deg,
-    #ffffff99,
-    #ffffff99 5%,
-    #ffffff2c 5%,
-    #ffffff2c 20%
-  );
-} */
-
 .CTA {
   background: var(--color-tertiary);
+  color: var(--color-lightFont);
 }
 
 .Reset {
   background: var(--color-red-700);
+  color: var(--color-lightFont);
 }
 
 .confetti-wrapper {
