@@ -192,6 +192,7 @@ input[type="number"] {
     opacity: 0.8;
   }
 }
+
 .confetti-piece {
   position: absolute;
   top: -20px;
