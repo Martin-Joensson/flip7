@@ -3,8 +3,6 @@ import { useGameStore } from "../stores/gameStore";
 import SmallPlayerCard from "../components/SmallPlayerCard";
 import { NavLink } from "react-router-dom";
 import { useSettingStore } from "../stores/settingsStore";
-import { CapitalizeFirstLetter } from "../components/CapitalizeFirstLetter";
-import { Confetti } from "../components/Confetti";
 
 export const PlayGrid = () => {
   const players = useGameStore((s) => s.players);
@@ -15,7 +13,6 @@ export const PlayGrid = () => {
   const setEditable = useSettingStore((state) => state.setEditable);
 
   const [scores, setScores] = useState(players.map(() => ""));
-  const [isWinner, setIsWinner] = useState();
 
   const hideHistory = useSettingStore((state) => state.hideHistory);
   const setHideHistory = useSettingStore((state) => state.setHideHistory);
@@ -23,15 +20,32 @@ export const PlayGrid = () => {
   const handleHistory = () => {
     setHideHistory(!hideHistory);
   };
+  // Compute total scores per player
+  const playersWithTotals = players.map((player) => ({
+    ...player,
+    totalScore: player.scores.reduce((sum, s) => sum + s, 0),
+  }));
 
-  // Compute the leading player over winScore
-  const totalScores = players.map((p) =>
-    p.scores.reduce((sum, s) => sum + s, 0)
+  // Players who reached the goal
+  const eligiblePlayers = playersWithTotals.filter(
+    (p) => p.totalScore >= scoreGoal
   );
-  const maxScore = Math.max(...totalScores.filter((s) => s >= scoreGoal));
-  const leadingPlayerId = players.find(
-    (p, i) => totalScores[i] === maxScore
-  )?.id;
+
+  // Default values
+  let winningPlayerIds = [];
+  let hasWinner = false;
+
+  if (eligiblePlayers.length > 0) {
+    const maxScore = Math.max(...eligiblePlayers.map((p) => p.totalScore));
+
+    const topPlayers = eligiblePlayers.filter((p) => p.totalScore === maxScore);
+
+    // ✅ WIN CONDITION: exactly one top player
+    if (topPlayers.length === 1) {
+      hasWinner = true;
+      winningPlayerIds = [topPlayers[0].id];
+    }
+  }
 
   /* -------- Global submit -------- */
   const submitAllPlayers = () => {
@@ -73,7 +87,7 @@ export const PlayGrid = () => {
               addRoundScores(numericScores);
               setScores(players.map(() => ""));
             }}
-            isWinner={player.id === leadingPlayerId}
+            isWinner={hasWinner && winningPlayerIds.includes(player.id)}
           />
         ))}
       </div>
