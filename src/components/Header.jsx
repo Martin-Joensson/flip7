@@ -22,9 +22,11 @@ export const Header = () => {
         <img className="w-14" src={logo} />
       </NavLink>
       <div className="text-right">
-
         <ToggleSwitch
           size="sm"
+          pip1="bg-flip7-beige"
+          pip2="bg-flip7-dark"
+          border="true"
           checked={!hideHistory}
           onChange={() => setHideHistory(!hideHistory)}
         />

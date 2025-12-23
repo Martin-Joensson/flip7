@@ -39,7 +39,7 @@ export const ToggleSwitch = ({
         }`}
       ></span>
       <span
-        className={`absolute rounded-full transition-transform duration-200
+        className={`absolute rounded-full transition-transform border duration-200
                     ${s.knob} left-1 top-1
                     ${checked ? s.translate : ""}
                     ${checked ? pipColor1 : pipColor2}`}

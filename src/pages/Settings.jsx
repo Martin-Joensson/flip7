@@ -59,6 +59,9 @@ export const Settings = () => {
             <div className="my-4">
               <ToggleSwitch
                 size="md"
+                pip1="bg-flip7-beige"
+                pip2="bg-flip7-dark"
+                border="true"
                 checked={!hideHistory}
                 onChange={() => setHideHistory(!hideHistory)}
               />
