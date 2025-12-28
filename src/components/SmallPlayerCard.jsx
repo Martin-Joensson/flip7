@@ -101,7 +101,7 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
             className="h-4 w-8 rounded-full cursor-pointer border border-white"
             type="color"
             value={player.color}
-            onChange={(e) => setPlayerColor(player.color, e.target.value)}
+            onChange={(e) => setPlayerColor(player.id, e.target.value)}
           />
         </div>
       ) : null}

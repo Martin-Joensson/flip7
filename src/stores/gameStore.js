@@ -60,10 +60,10 @@ export const useGameStore = create((set, get) => ({
     }),
 
   /* -------- Player color -------- */
-  setPlayerColor: (playerColor, color) =>
+  setPlayerColor: (playerId, color) =>
     set({
       players: get().players.map((player) =>
-        player.color === playerColor ? { ...player, color } : player
+        player.id === playerId ? { ...player, color } : player
       ),
     }),
 
