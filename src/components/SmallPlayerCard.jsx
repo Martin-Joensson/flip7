@@ -122,7 +122,7 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
 
       {editable ? null : (
         <input
-          className="w-full p-2 my-2 text-sm text-center border rounded-full"
+          className="w-full p-2 my-2 text-[16px] text-center border rounded-full"
           type="number"
           inputMode="numeric"
           value={score}
