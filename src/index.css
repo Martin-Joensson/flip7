@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-darkBackground: #131516;
   --color-lightBackground: #ffffff;
@@ -11,6 +13,14 @@
   --color-button: rgba(67, 67, 67, 0.87);
 
   --color-hover: rgba(50, 50, 50, 0.17);
+
+  --color-darkText: oklch(96.7% 0.003 264.542);
+  --color-darkBg: oklch(27.8% 0.033 256.848);
+  --color-darkBgAccent: oklch(24.8% 0.033 256.848);
+
+  --color-lightText: oklch(27.8% 0.033 256.848);
+  --color-lightBg: oklch(96.7% 0.003 264.542);
+  --color-lightBgAccent: oklch(99.7% 0.003 264.542);
 
   --color-darkFont: rgba(0, 0, 0, 1);
   --color-lightFont: rgba(240, 240, 240, 1);
@@ -53,8 +63,6 @@
   text-align: center;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: var(--color-darkBackground);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -84,7 +92,6 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -158,6 +165,28 @@ input[type="number"] {
 
 .CTA:focus,
 .CTA:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.ThemeToggle {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  background: transparent;
+}
+
+.ThemeToggle:hover {
+  border: 1px solid transparent;
+  color: #555;
+}
+
+.ThemeToggle:focus,
+.ThemeToggle:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
@@ -250,7 +279,7 @@ input[type="number"] {
   );
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: var(--color-lightBackground);
@@ -275,4 +304,4 @@ input[type="number"] {
     border: 1px solid #000;
     color: #fff;
   }
-}
+} */
