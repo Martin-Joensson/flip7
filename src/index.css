@@ -15,7 +15,7 @@
   --color-hover: rgba(50, 50, 50, 0.17);
 
   --color-darkText: oklch(96.7% 0.003 264.542);
-  --color-darkBg: oklch(27.8% 0.033 256.848);
+  --color-darkBg: #131516;
   --color-darkBgAccent: oklch(24.8% 0.033 256.848);
 
   --color-lightText: oklch(27.8% 0.033 256.848);
@@ -279,7 +279,7 @@ input[type="number"] {
   );
 }
 
-/* @media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: var(--color-lightBackground);
@@ -304,4 +304,4 @@ input[type="number"] {
     border: 1px solid #000;
     color: #fff;
   }
-} */
+}

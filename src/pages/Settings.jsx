@@ -70,7 +70,7 @@ export const Settings = () => {
           </div>
         </div>
       </div>
-      <button onClick={() => navigate(-1)}>Back</button>
+      <button className="CTA"onClick={() => navigate(-1)}>Back</button>
     </>
   );
 };

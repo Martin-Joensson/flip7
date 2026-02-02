@@ -99,15 +99,13 @@ export const PlayGrid = () => {
         )}
 
         <div className="w-1/2 mx-auto my-4 flex flex-col gap-2">
-          <button className="mx-auto w-full" onClick={handleEdit}>
+          <button className="CTA mx-auto w-full" onClick={handleEdit}>
             {editable ? "Save" : "Edit Players"}
           </button>
           <NavLink to="/settings">
             <button className="text-xs w-full">Settings</button>
           </NavLink>
-          <button className="text-xs cursor-pointer" onClick={handleHistory}>
-            {hideHistory ? "Show Rounds" : "Hide Rounds"}
-          </button>
+  
           <button className="mt-4 mx-auto  Reset" onClick={reset}>
             Reset
           </button>
