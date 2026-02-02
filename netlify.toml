@@ -1,4 +1,12 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
 [[headers]]
+  # Apply to all files, including index.html
   for = "/*"
   [headers.values]
+    # Prevent LinkedIn 206 Partial Content bug
     Accept-Ranges = "none"
+    # Optional: add cache control for static assets
+    Cache-Control = "public, max-age=0"
