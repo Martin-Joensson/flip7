@@ -27,7 +27,6 @@ export const useGameStore = create((set, get) => ({
   round: 0,
   isStarted: false,
 
-  /* -------- Game lifecycle -------- */
   startGame: () => {
     const { numberOfPlayers } = useSettingStore.getState();
 
@@ -45,7 +44,6 @@ export const useGameStore = create((set, get) => ({
       isStarted: false,
     }),
 
-  /* -------- Player editing (optional pre-game) -------- */
   setPlayerName: (playerId, name) =>
     set({
       players: get().players.map((player) =>
@@ -55,19 +53,17 @@ export const useGameStore = create((set, get) => ({
               name,
               isDefaultName: false,
             }
-          : player
+          : player,
       ),
     }),
 
-  /* -------- Player color -------- */
   setPlayerColor: (playerId, color) =>
     set({
       players: get().players.map((player) =>
-        player.id === playerId ? { ...player, color } : player
+        player.id === playerId ? { ...player, color } : player,
       ),
     }),
 
-  /* -------- Text color -------- */
   togglePlayerTextColor: (playerId) =>
     set({
       players: get().players.map((player) =>
@@ -76,11 +72,10 @@ export const useGameStore = create((set, get) => ({
               ...player,
               textColor: player.textColor === "#ffffff" ? "#000000" : "#ffffff",
             }
-          : player
+          : player,
       ),
     }),
 
-  /* -------- Scoring -------- */
   addRoundScores: (scoresPerPlayer) =>
     set({
       players: get().players.map((player, index) => ({

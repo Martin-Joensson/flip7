@@ -35,8 +35,8 @@ export const ToggleSwitch = ({
       <span
         className={`absolute cursor-pointer top-0 left-0 right-0 bottom-0  rounded-full transition-colors duration-200
                     ${checked ? bgColor1 : bgColor2} ${
-          border ? "border rounded-full" : null
-        }`}
+                      border ? "border rounded-full" : null
+                    }`}
       ></span>
       <span
         className={`absolute rounded-full transition-transform border duration-200

@@ -21,7 +21,7 @@ export const Confetti = () => {
       confetti.style.setProperty("--fall-duration", `${duration}s`);
       confetti.style.setProperty(
         "--confetti-color",
-        colors[Math.floor(Math.random() * colors.length)]
+        colors[Math.floor(Math.random() * colors.length)],
       );
 
       // reset animation

@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export const Results = () => {
-  return (
-    <div>The winner is!</div>
-  )
-}
+  return <div>The winner is!</div>;
+};

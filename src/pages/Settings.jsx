@@ -6,7 +6,7 @@ import { ToggleSwitch } from "../components/ToggleSwitch";
 export const Settings = () => {
   const numberOfPlayers = useSettingStore((state) => state.numberOfPlayers);
   const setNumberOfPlayers = useSettingStore(
-    (state) => state.setNumberOfPlayers
+    (state) => state.setNumberOfPlayers,
   );
 
   const navigate = useNavigate();
@@ -70,7 +70,9 @@ export const Settings = () => {
           </div>
         </div>
       </div>
-      <button className="CTA"onClick={() => navigate(-1)}>Back</button>
+      <button className="CTA" onClick={() => navigate(-1)}>
+        Back
+      </button>
     </>
   );
 };

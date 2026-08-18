@@ -9,7 +9,7 @@ export const Start = () => {
 
   const numberOfPlayers = useSettingStore((state) => state.numberOfPlayers);
   const setNumberOfPlayers = useSettingStore(
-    (state) => state.setNumberOfPlayers
+    (state) => state.setNumberOfPlayers,
   );
 
   const startGame = useGameStore((s) => s.startGame);

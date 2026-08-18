@@ -46,7 +46,7 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
                 if (player.name.trim() === "") {
                   setPlayerName(
                     player.id,
-                    `Player ${player.id.replace("player", "")}`
+                    `Player ${player.id.replace("player", "")}`,
                   );
                 }
               }}
@@ -110,7 +110,7 @@ function SmallPlayerCard({ player, score, onScoreChange, onSubmit, isWinner }) {
         <h3 className="font-bold">
           {player.scores.reduce(
             (accumulator, currentValue) => accumulator + currentValue,
-            initialValue
+            initialValue,
           )}
         </h3>
       )}

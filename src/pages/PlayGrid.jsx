@@ -20,34 +20,32 @@ export const PlayGrid = () => {
   const handleHistory = () => {
     setHideHistory(!hideHistory);
   };
-  // Compute total scores per player
+
   const playersWithTotals = players.map((player) => ({
     ...player,
     totalScore: player.scores.reduce((sum, s) => sum + s, 0),
   }));
 
-  // Players who reached the goal
+ 
   const eligiblePlayers = playersWithTotals.filter(
-    (p) => p.totalScore >= scoreGoal
+    (p) => p.totalScore >= scoreGoal,
   );
 
-  // Default values
+
   let winningPlayerIds = [];
   let hasWinner = false;
 
   if (eligiblePlayers.length > 0) {
     const maxScore = Math.max(...eligiblePlayers.map((p) => p.totalScore));
-
     const topPlayers = eligiblePlayers.filter((p) => p.totalScore === maxScore);
 
-    // ✅ WIN CONDITION: exactly one top player
     if (topPlayers.length === 1) {
       hasWinner = true;
       winningPlayerIds = [topPlayers[0].id];
     }
   }
 
-  /* -------- Global submit -------- */
+
   const submitAllPlayers = () => {
     const hasEmpty = scores.some((s) => s === "");
 
@@ -82,7 +80,7 @@ export const PlayGrid = () => {
             }}
             onSubmit={() => {
               const numericScores = players.map((_, i) =>
-                i === index ? Number(scores[i]) : 0
+                i === index ? Number(scores[i]) : 0,
               );
               addRoundScores(numericScores);
               setScores(players.map(() => ""));
@@ -105,7 +103,7 @@ export const PlayGrid = () => {
           <NavLink to="/settings">
             <button className="text-xs w-full">Settings</button>
           </NavLink>
-  
+
           <button className="mt-4 mx-auto  Reset" onClick={reset}>
             Reset
           </button>
