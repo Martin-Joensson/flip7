@@ -17,8 +17,8 @@ export const ThemeToggle = () => {
     <button
       alt="Toggle button for light and dark themes."
       onClick={toggle}
-      className="ThemeToggle rounded-xl border px-4 py-2 text-sm text-gray-800  hover:border-accent
-         dark:text-gray-100 transition-colors duration-300"
+      className="ThemeToggle rounded-xl border px-4 py-2 text-sm text-flip7-navy  hover:border-accent
+         dark:text-flip7-beige transition-colors duration-300"
     >
       {isDark ? (
         <FontAwesomeIcon icon="fa-solid fa-sun" />

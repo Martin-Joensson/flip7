@@ -17,10 +17,10 @@ export const ToggleSwitch = ({
 
   const s = sizes[size] || sizes.md;
 
-  const bgColor1 = color1 || "bg-flip7-teal";
-  const bgColor2 = color2 || "bg-gray-300";
+  const bgColor1 = color1 || "bg-flip7-orange";
+  const bgColor2 = color2 || "bg-flip7-beige";
   const pipColor1 = pip1 || "#ffffff";
-  const pipColor2 = pip2 || "#FFF";
+  const pipColor2 = pip2 || "#ffffff";
 
   const frame = border || "";
 

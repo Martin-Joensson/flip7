@@ -39,7 +39,7 @@ export const Header = () => {
           <ToggleSwitch
             size="sm"
             pip1="bg-flip7-beige"
-            pip2="bg-flip7-dark"
+            pip2="bg-flip7-navy"
             border="true"
             checked={!hideHistory}
             onChange={handleToggle}
