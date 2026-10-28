@@ -3,7 +3,7 @@ import raglanLogo from "../assets/raglanLogo.svg";
 
 export const Footer = () => {
   return (
-    <div className="absolute flex justify-between w-full bottom-0 p-2">
+    <div className="absolute flex justify-between w-9/10 self-center bottom-4 p-2">
       <a href="https://raglancreation.com/">
         <img className="w-10" src={raglanLogo} />
       </a>

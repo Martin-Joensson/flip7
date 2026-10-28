@@ -1,4 +1,4 @@
-import logo from "../assets/flip7logo.webp";
+import logo from "../assets/F7ScoreAppNobackground.svg";
 import { NavLink } from "react-router-dom";
 import { useSettingStore } from "../stores/settingsStore";
 import { useGameStore } from "../stores/gameStore";
@@ -29,9 +29,9 @@ export const Start = () => {
 
   return (
     <div className="flex flex-col m-auto gap-2">
-      <img className="w-1/3 m-auto" src={logo} />
+      <img className="w-1/3 max-w-100 m-auto" src={logo} />
       <h1 className="text-center">
-        <span className="hidden">Flip 7</span>Score App
+        <span className="hidden">Flip 7 - Score App</span>
       </h1>
       <div className="flex mx-auto flex-col gap-2">
         <NavLink to={"/play"}>

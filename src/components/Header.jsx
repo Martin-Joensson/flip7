@@ -1,5 +1,5 @@
 import { NavLink, useParams, useLocation } from "react-router-dom";
-import logo from "../assets/flip7logo.webp";
+import logo from "../assets/F7ScoreAppNoBackground.svg";
 import { useSettingStore } from "../stores/settingsStore";
 import { CapitalizeFirstLetter } from "./CapitalizeFirstLetter";
 import { useGameStore } from "../stores/gameStore";
