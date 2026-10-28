@@ -1,4 +1,4 @@
-import logo from "../assets/F7ScoreAppNobackground.svg";
+import logo from "../assets/F7ScoreAppNoBackground.svg";
 import { NavLink } from "react-router-dom";
 import { useSettingStore } from "../stores/settingsStore";
 import { useGameStore } from "../stores/gameStore";
